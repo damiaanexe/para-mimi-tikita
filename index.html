@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi puchurrumina 🖤</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #23102c;
+      color: rgb(126, 18, 18);
+      font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .corazon {
+      width: min(65vw, 280px);
+      overflow: visible;
+      animation: latido 2.0s infinite ease-in-out;
+      filter: drop-shadow(0 0 18px var(--color));
+    }
+
+    .corazon path {
+      fill: var(--color);
+      animation: colores 10s infinite linear;
+    }
+
+    @keyframes colores {
+      0%   { fill: #800020; }
+      20%  { fill: #228b22; }
+      40%  { fill: #0077be; }
+      60%  { fill: #800080; }
+      80%  { fill: #000000; }
+      100% { fill: #800020; }
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.09); }
+    }
+
+    #mensaje {
+      margin-top: 25px;
+      min-height: 65px;
+      font-size: clamp(20px, 5vw, 30px);
+      font-weight: bold;
+      color: #6b181f;
+      text-shadow: 0 0 12px #b90000;
+      animation: aparecer 1s ease;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .subtitulo {
+      color: #e19dfd;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🖤 Para mi caramelito 🖤</h1>
+
+  <svg class="corazon" viewBox="0 0 100 90"
+       role="img" aria-label="Corazón animado">
+    <path d="M50 85
+      C43 77 5 52 5 28
+      C5 1 38 -5 50 20
+      C62 -5 95 1 95 28
+      C95 52 57 77 50 85 Z"/>
+  </svg>
+
+  <div id="mensaje">La niña mas hermosa ante mis ojos ❤️</div>
+
+  <p class="subtitulo">
+    Te amo mi vida 🖤
+  </p>
+
+  <script>
+    // CAMBIA ESTOS MENSAJES POR LOS TUYOS
+    const mensajes = [
+      "Te amo ponqueshita mella 🖤",
+      "elesh mi vida ✨",
+      "gracias pol eshtal ponmigo shemple 🖤",
+      "este añito ha sido de enseñanzas y amor entre los dos 🌷",
+      "No olvides lo especial te elesh pala mi muñequita mella ti amoooo 🖤"
+    ];
+
+    let indice = 0;
+    const texto = document.getElementById("mensaje");
+
+    function cambiarMensaje() {
+      indice = (indice + 1) % mensajes.length;
+
+      texto.style.animation = "none";
+      texto.textContent = mensajes[indice];
+
+      // Reinicia la animación del texto
+      void texto.offsetWidth;
+      texto.style.animation = "aparecer 1s ease";
+    }
+
+    // Cambia el mensaje cada 3 segundos
+    setInterval(cambiarMensaje, 5000);
+  </script>
+</body>
+</html>
